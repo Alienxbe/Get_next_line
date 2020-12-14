@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
+/*   By: mykman <mykman@student.19.be>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 18:01:52 by mykman            #+#    #+#             */
-/*   Updated: 2020/12/13 20:31:41 by mykman           ###   ########.fr       */
+/*   Updated: 2020/12/14 01:07:46 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,26 @@
 #include <stdio.h>
 #include "get_next_line.h"
 
+void	add(char *str)
+{
+	static char	*a;
+
+	if (!a)
+		printf("First occurence\n");
+	else
+		printf("last occurence was : %s\n", a);
+	a = str;
+}
+
 int main(void)
 {
-	int		fd;
-	int		bytes;
-	char	buf[BUFFER_SIZE + 1];
-
+	add("Bonjour");
+	add("comment ca va ?");
+	add("Oui");
+	/*int		fd;
 	if ((fd = open("test.txt", O_RDONLY)) < 0)
 		return (1);
-
-	bytes = read(fd, buf, BUFFER_SIZE);
-	printf("%d : %s\n", bytes, buf);
-
-
 	if ((close(fd)) < 0)
-		return (1);
+		return (1);*/
 	return (0);
 }
