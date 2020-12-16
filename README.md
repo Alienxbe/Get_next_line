@@ -9,6 +9,10 @@ This function returns a line ending with a newline, read from a file descriptor 
 **Version 1.0.0**
 + Working function
 
+## Unknown features (aka bugs)
+
++ Bad Output
+
 ## Licenses & copyright
 
 © Ykman Martin, School 19
