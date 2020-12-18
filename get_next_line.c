@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.19.be>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 17:59:17 by mykman            #+#    #+#             */
-/*   Updated: 2020/12/15 01:50:11 by mykman           ###   ########.fr       */
+/*   Updated: 2020/12/16 17:10:25 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int		get_next_line(int fd, char **line)
 	{
 		tmp = saved;
 		saved = ft_strdup(ft_strchr(saved, '\n') + 1);
-		*ft_strchr(tmp, '\n') = 0;
+		*(ft_strchr(tmp, '\n') + 1) = 0;
 		*line = ft_strdup(tmp);
 		free(tmp);
-		return (0);
+		return (1);
 	}
 	while ((n = read(fd, buf, BUFFER_SIZE)) > 0)
 	{
@@ -59,7 +59,7 @@ int		get_next_line(int fd, char **line)
 			if (saved)
 				*line = gnl_strjoin(saved, *line, 2);
 			saved = ft_strdup(ft_strchr(buf, '\n') + 1);
-			*ft_strchr(*line, '\n') = 0;
+			*(ft_strchr(*line, '\n') + 1) = 0;
 			return ((n < BUFFER_SIZE) ? 0 : 1);
 		}
 	}

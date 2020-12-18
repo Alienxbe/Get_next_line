@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.19.be>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 18:01:52 by mykman            #+#    #+#             */
-/*   Updated: 2020/12/15 22:46:37 by mykman           ###   ########.fr       */
+/*   Updated: 2020/12/16 17:07:26 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,20 @@ void	add(char *str)
 
 int main(void)
 {
-	//int		fd;
+	int		fd;
+	int		out;
 	char	*str = NULL;
-	for (int i = 0; i < 2; i++)
-	{
-		get_next_line(1, &str);
-		printf("Input : %s\n", str);
-		free(str);
-	}
-	/*if ((fd = open("test.txt", O_RDONLY)) < 0)
+
+	if ((fd = open("test.txt", O_RDONLY)) < 0)
 		return (1);
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 10; i++)
 	{
-		if (get_next_line(fd, &str) == -1)
-			return (1);
-		printf("%s\n", str);
+		out = get_next_line(fd, &str);
+		printf("%d : %s", out, str);
 		free(str);
 	}
 	printf("%s\n", str);
 	if ((close(fd)) < 0)
-		return (1);*/
+		return (1);
 	return (0);
 }
