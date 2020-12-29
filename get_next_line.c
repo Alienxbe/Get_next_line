@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 17:59:17 by mykman            #+#    #+#             */
-/*   Updated: 2020/12/18 15:21:01 by mykman           ###   ########.fr       */
+/*   Updated: 2020/12/29 21:29:50 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*gnl_strjoin(char *s1, char *s2, int free_char)
 	return (-1);
 }*/
 
-int		get_next_line(int fd, char **line)
+/*int		get_next_line(int fd, char **line)
 {
 	static char	*saved;
 	char		buf[BUFFER_SIZE + 1];
@@ -86,9 +86,27 @@ int		get_next_line(int fd, char **line)
 		}
 	}
 	return ((bytes) ? -1 : 0);
+}*/
+
+int		get_next_line(int fd, char **line)
+{
+	static char	*saved;
+	char		buff[BUFFER_SIZE];
+	int			bytes;
+
+	if (fd < 0 || !line)
+		return (-1);
+	while (!ft_strchr(saved, '\n'))
+	{
+		if ((bytes = read(fd, buff, BUFFER_SIZE)) < 0)
+			return (-1);
+		buff[i] = 0;
+		if (!(gnl_strjoin(saved, buff)))
+			return (-1);
+	}
+	
+	return (0);
 }
-
-
 
 
 
