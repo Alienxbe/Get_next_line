@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 17:59:17 by mykman            #+#    #+#             */
-/*   Updated: 2020/12/29 21:29:50 by mykman           ###   ########.fr       */
+/*   Updated: 2020/12/31 18:32:53 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,23 @@ char	*gnl_strjoin(char *s1, char *s2, int free_char)
 	return ((bytes) ? -1 : 0);
 }*/
 
+char	*gnl_line(char *saved)
+{
+	char	*line;
+	int		size;
+
+	size = 0;
+	while (saved[size] != '\n')
+		size++;
+	if ()
+	return (line);
+}
+
 int		get_next_line(int fd, char **line)
 {
 	static char	*saved;
 	char		buff[BUFFER_SIZE];
+	char		*tmp;
 	int			bytes;
 
 	if (fd < 0 || !line)
@@ -100,10 +113,12 @@ int		get_next_line(int fd, char **line)
 	{
 		if ((bytes = read(fd, buff, BUFFER_SIZE)) < 0)
 			return (-1);
-		buff[i] = 0;
-		if (!(gnl_strjoin(saved, buff)))
+		buff[bytes] = 0;
+		if (!(saved = gnl_strjoin(saved, buff, 2))) //ATTENTION FREE si malloc foire (a faire)
 			return (-1);
 	}
+	if (!(tmp = ft_strdup(saved[ft_strchr(saved, '\n') + 1])))
+		return (-1);
 	
 	return (0);
 }
