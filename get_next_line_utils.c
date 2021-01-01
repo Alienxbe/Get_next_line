@@ -6,15 +6,15 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 17:59:29 by mykman            #+#    #+#             */
-/*   Updated: 2020/12/18 15:09:44 by mykman           ###   ########.fr       */
+/*   Updated: 2021/01/01 16:12:38 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	size_t i;
+	int i;
 
 	i = 0;
 	if (!s)
@@ -37,13 +37,14 @@ char	*ft_strchr(char *s, char c)
 	return ((*s == c) ? (char *)s : NULL);
 }
 
-char	*ft_strdup(const char *s)
+char	*gnl_strldup(const char *s, int size)
 {
-	size_t	size;
 	char	*ptr;
 
-	size = (size_t)(ft_strlen(s) + 1);
-	if (!(ptr = malloc(sizeof(*ptr) * size)))
+	size++;
+	if (size == -1 || size > ft_strlen(s) + 1)
+		size = ft_strlen(s) + 1;
+	if (!(ptr = (char *)malloc(sizeof(*ptr) * size)))
 		return (NULL);
 	return (ft_memcpy(ptr, s, size));
 }

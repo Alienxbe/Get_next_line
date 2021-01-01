@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mykman <mykman@student.19.be>              +#+  +:+       +#+        */
+/*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 17:59:20 by mykman            #+#    #+#             */
-/*   Updated: 2020/12/15 01:50:53 by mykman           ###   ########.fr       */
+/*   Updated: 2021/01/01 16:12:53 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	get_next_line(int fd, char **line);
 */
 
 char	*gnl_strjoin(char *s1, char *s2, int free_char);
-size_t	ft_strlen(const char *s);
+int		ft_strlen(const char *s);
 char	*ft_strchr(char *s, char c);
-char	*ft_strdup(const char *s);
+char	*gnl_strldup(const char *s, int size);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 #endif
