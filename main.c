@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
+/*   By: mykman <mykman@student.19.be>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 18:01:52 by mykman            #+#    #+#             */
-/*   Updated: 2020/12/29 20:58:39 by mykman           ###   ########.fr       */
+/*   Updated: 2021/01/03 13:30:43 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,9 @@ void	add(char *str)
 
 int main(void)
 {
-	int		fd;
-	char	*str = NULL;
-
-	if ((fd = open("test.txt", O_RDONLY)) < 0)
-		return (1);
-	printf("%d : %s\n", get_next_line(fd, &str), str);
-	if ((close(fd)) < 0)
-		return (1);
+	add("Bonjour");
+	add("comment");
+	add("Tu vas ?");
+	
 	return (0);
 }
