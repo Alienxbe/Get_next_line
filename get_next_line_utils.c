@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 17:59:29 by mykman            #+#    #+#             */
-/*   Updated: 2021/01/03 20:46:56 by mykman           ###   ########.fr       */
+/*   Updated: 2021/01/07 21:32:44 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int		ft_index(const char *s, char c)
 		if (s[i] == c)
 			return (i);
 	return ((s[i] == c) ? i : -1);
+}
+
+int		ft_strlen(const char *s)
+{
+	;
 }
 
 char	*ft_substr(const char *s, int start, int len)

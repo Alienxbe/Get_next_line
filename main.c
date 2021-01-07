@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 18:01:52 by mykman            #+#    #+#             */
-/*   Updated: 2021/01/03 20:28:35 by mykman           ###   ########.fr       */
+/*   Updated: 2021/01/07 20:23:46 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ void	add(char *str)
 int main(void)
 {
 	int		fd;
-	char	*str = NULL;
+	char	*str;
 
 	if ((fd = open("test.txt", O_RDONLY)) < 0)
 		return (1);
 	printf("%d : %s\n", get_next_line(fd, &str), str);
+	free(str);
 	if ((close(fd)) < 0)
 		return (1);
 	return (0);
