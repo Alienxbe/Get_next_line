@@ -1,4 +1,5 @@
 #!/bin/sh
 
-gcc -Wall -Wextra -Werror *.c -D BUFFER_SIZE=5 -g -fsanitize=address
+clear
+gcc -Wall -Wextra -Werror *.c -D BUFFER_SIZE=10
 ./a.out

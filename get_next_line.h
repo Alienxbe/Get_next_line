@@ -3,29 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mykman <mykman@student.19.be>              +#+  +:+       +#+        */
+/*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 17:59:20 by mykman            #+#    #+#             */
-/*   Updated: 2020/12/15 01:50:53 by mykman           ###   ########.fr       */
+/*   Updated: 2021/01/08 01:20:32 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GNL_H
 # define GNL_H
 
+# include <sys/types.h>
+# include <sys/uio.h>
 # include <unistd.h>
-#include <stdlib.h>
+# include <stdlib.h>
 
-int	get_next_line(int fd, char **line);
+/*
+** --- Main ---
+*/
+
+int		test(int fd, char **str);
+int		get_next_line(int fd, char **line);
+char	*gnl_strjoin(char *s1, char *s2);
 
 /*
 ** --- Utils ---
 */
 
-char	*gnl_strjoin(char *s1, char *s2, int free_char);
-size_t	ft_strlen(const char *s);
-char	*ft_strchr(char *s, char c);
-char	*ft_strdup(const char *s);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
+int		ft_index(const char *str, char c);
+char	*ft_substr(const char *s, int start, int l);
+void	*ft_memcpy(void *dest, const void *src, int n);
 
 #endif
