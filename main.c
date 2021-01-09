@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 00:34:22 by mykman            #+#    #+#             */
-/*   Updated: 2021/01/09 00:55:50 by mykman           ###   ########.fr       */
+/*   Updated: 2021/01/09 14:59:55 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int main(void)
 
 	if ((fd = open("test.txt", O_RDONLY)) < 0)
 		return (1);
-	printf("%d\n", get_next_line(fd, &str));
-	printf("%s\n", str);
+	printf("\"%s\" : %d\n", str, get_next_line(fd, &str));
+	free(str);
 	if ((close(fd)) < 0)
 		return (1);
 	return (0);
