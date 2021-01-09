@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 00:34:22 by mykman            #+#    #+#             */
-/*   Updated: 2021/01/08 01:04:35 by mykman           ###   ########.fr       */
+/*   Updated: 2021/01/09 00:55:50 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,14 @@ void	add(char *str)
 
 int main(void)
 {
-	char *str = "la base";
-	printf("%s\n", str);
-	get_next_line(10, &str);
-	printf("%s\n", str);
-/*	int		fd;
+	int		fd;
 	char	*str;
 
-	str = NULL;
 	if ((fd = open("test.txt", O_RDONLY)) < 0)
 		return (1);
-	printf("%d : %s\n", get_next_line(fd, &str), str);
+	printf("%d\n", get_next_line(fd, &str));
+	printf("%s\n", str);
 	if ((close(fd)) < 0)
-		return (1);*/
+		return (1);
 	return (0);
 }

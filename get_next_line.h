@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 17:59:20 by mykman            #+#    #+#             */
-/*   Updated: 2021/01/08 01:20:32 by mykman           ###   ########.fr       */
+/*   Updated: 2021/01/09 00:58:51 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 ** --- Main ---
 */
 
-int		test(int fd, char **str);
 int		get_next_line(int fd, char **line);
 char	*gnl_strjoin(char *s1, char *s2);
 

@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 00:34:22 by mykman            #+#    #+#             */
-/*   Updated: 2021/01/08 01:25:38 by mykman           ###   ########.fr       */
+/*   Updated: 2021/01/09 01:06:00 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,37 +36,27 @@ char	*gnl_strjoin(char *s1, char *s2)
 	return (ptr);
 }
 
-int	test(int fd, char **str)
-{
-	*str = "Oui";
-	return (fd);
-}
-
 int		get_next_line(int fd, char **line)
 {
 	static char	*saved;
 	char		*buff;
-	//int			bytes;
+	int			bytes;
 
 	if (fd < 0 || !line
 		|| !(buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
-	while (ft_index(buff, '\n') < 0)
+	while (ft_index(saved, '\n') <= 0)
 	{
-		/*if ((bytes = (int)read(fd, buff, BUFFER_SIZE)) < 0)
+		if ((bytes = (int)read(fd, buff, BUFFER_SIZE)) < 0)
 		{
 			free(buff);
 			return (-1);
 		}
-		buff[bytes] = 0;*/
-		buff[0] = 'a';
-		buff[1] = '\n';
-		buff[2] = 0;
+		buff[bytes] = 0;
 		if (!(saved = gnl_strjoin(saved, buff)))
 			return (-1);
 	}
 	*line = saved;
-	printf("%s\n", *line);
 	free(buff);
-	return (fd);
+	return (0);
 }
