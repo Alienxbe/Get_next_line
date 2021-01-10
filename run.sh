@@ -1,5 +1,5 @@
 #!/bin/sh
 
 clear
-gcc -Wall -Wextra -Werror *.c -D BUFFER_SIZE=100 -g -fsanitize=leak
+gcc -Wall -Wextra -Werror Basic/*.c main.c -D BUFFER_SIZE=100000
 ./a.out
