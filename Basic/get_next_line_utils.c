@@ -6,13 +6,13 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 17:59:29 by mykman            #+#    #+#             */
-/*   Updated: 2021/03/22 21:05:59 by mykman           ###   ########.fr       */
+/*   Updated: 2021/03/22 21:25:07 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		free_return(char **str, int ret_value)
+int	free_return(char **str, int ret_value)
 {
 	if (*str)
 		free(*str);
@@ -20,7 +20,7 @@ int		free_return(char **str, int ret_value)
 	return (ret_value);
 }
 
-int		ft_index(char *s, char c)
+int	ft_index(char *s, char c)
 {
 	int	i;
 
@@ -35,7 +35,7 @@ int		ft_index(char *s, char c)
 	return (-1);
 }
 
-int		ft_strlen(char *s)
+int	ft_strlen(char *s)
 {
 	if (s)
 		return (ft_index(s, 0));
