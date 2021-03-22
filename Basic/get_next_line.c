@@ -6,7 +6,7 @@
 /*   By: mykman <mykman@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/14 00:34:22 by mykman            #+#    #+#             */
-/*   Updated: 2021/01/10 10:49:49 by mykman           ###   ########.fr       */
+/*   Updated: 2021/03/22 21:21:49 by mykman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	*gnl_strjoin(char *s1, char *s2)
 	char	*ptr;
 
 	size = ft_strlen(s1) + ft_strlen(s2);
-	if (!(ptr = (char *)malloc(sizeof(char) * (size + 1))))
+	ptr = (char *)malloc(sizeof(char) * (size + 1));
+	if (!ptr)
 		return (NULL);
 	ft_memcpy(ptr, s1, ft_strlen(s1));
 	ft_memcpy(ptr + ft_strlen(s1), s2, ft_strlen(s2));
@@ -28,29 +29,31 @@ char	*gnl_strjoin(char *s1, char *s2)
 	return (ptr);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	*saved;
 	char		*buff;
 	int			bytes;
 
-	if (fd < 0 || !line
-		|| !(buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
-		return (-1);
+	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!line || read(fd, NULL, 0) < 0 || !buff)
+		return (free_return(&buff, -1));
 	bytes = 1;
 	while (ft_index(saved, '\n') < 0 && bytes != 0)
 	{
-		if ((bytes = (int)read(fd, buff, BUFFER_SIZE)) < 0)
-			return (free_return(&buff, -1));
+		bytes = (int)read(fd, buff, BUFFER_SIZE);
 		buff[bytes] = 0;
-		if (!(saved = gnl_strjoin(saved, buff)))
+		saved = gnl_strjoin(saved, buff);
+		if (!saved)
 			return (free_return(&buff, -1));
 	}
 	free(buff);
-	if (!(*line = ft_substr(saved, 0, ft_index(saved, '\n'), 0)))
-		return (-1);
-	if (!(saved = ft_substr(saved, ft_index(saved, '\n') + 1,
-		ft_strlen(saved) - ft_index(saved, '\n'), 1)))
+	*line = ft_substr(saved, 0, ft_index(saved, '\n'), 0);
+	saved = ft_substr(saved, ft_index(saved, '\n') + 1,
+			ft_strlen(saved) - ft_index(saved, '\n'), 1);
+	if (!*line || !saved)
 		return (free_return(line, -1));
-	return ((bytes) ? 1 : free_return(&saved, 0));
+	if (!bytes)
+		return (free_return(&saved, 0));
+	return (1);
 }
